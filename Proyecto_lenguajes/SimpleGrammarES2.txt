@@ -1,0 +1,32 @@
+#JSGF V1.0;
+grammar sentence;
+ 
+public <sentence> =
+[<dato0>]
+[<dato1>]
+[<dato2>]
+[<dato3>]
+[<dato4>]
+[<dato5>]
+[<dato6>]
+[<dato7>]
+[<dato8>]
+[<dato9>]
+[<dato10>]
+[<dato11>]
+[<dato12>]
+[<dato1><dato2><dato3><dato4><dato5><dato6><dato7><dato8><dato9><dato10><dato11><dato12>];
+ 
+<dato0>=Agregar;
+<dato1>=Modificar;
+<dato2>=User;
+<dato3>=Delete;
+<dato4>=Password;
+<dato5>=Call;
+<dato6>=Mensaje;
+<dato7>=Activar;
+<dato8>=Desactivar;
+<dato9>=Camara;
+<dato10>=Salir;
+<dato11>=Brian;
+<dato12>=Disco;
