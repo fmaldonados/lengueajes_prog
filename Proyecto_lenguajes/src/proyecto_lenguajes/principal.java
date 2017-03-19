@@ -38,6 +38,7 @@ public class principal extends javax.swing.JFrame {
         this.jDialog1.setVisible(true);
         Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(169, 145, 0);
         lb_foto.setIcon(new ImageIcon(img));
+        imagen_principal.setIcon(new ImageIcon(img));
         try {
             recognizer = Central.createRecognizer(new EngineModeDesc(Locale.ROOT));
             recognizer.allocate();
@@ -55,6 +56,7 @@ public class principal extends javax.swing.JFrame {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         refresh();
+        refrescar_gramatica();
     }
     String connection = "jdbc:sqlserver://localhost:1433;databaseName=Lenguajes;user=innova;password=12345";
     Connection con;
@@ -62,6 +64,7 @@ public class principal extends javax.swing.JFrame {
     boolean mic_activado = false;
     Recognizer recognizer;
     boolean first = true;
+    String path = "user.png";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,7 +85,6 @@ public class principal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         jd_llamada = new javax.swing.JDialog();
-        jSlider1 = new javax.swing.JSlider();
         jLabel5 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -97,6 +99,7 @@ public class principal extends javax.swing.JFrame {
         lb_foto = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        errores = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -105,7 +108,7 @@ public class principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_contactos = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        imagen_principal = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -164,20 +167,17 @@ public class principal extends javax.swing.JFrame {
             .addGroup(jd_llamadaLayout.createSequentialGroup()
                 .addGroup(jd_llamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_llamadaLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jd_llamadaLayout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addComponent(jLabel6))
-                    .addGroup(jd_llamadaLayout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(jLabel7))
                     .addGroup(jd_llamadaLayout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jd_llamadaLayout.createSequentialGroup()
                         .addGap(133, 133, 133)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_llamadaLayout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel7)))
                 .addContainerGap(82, Short.MAX_VALUE))
         );
         jd_llamadaLayout.setVerticalGroup(
@@ -188,12 +188,10 @@ public class principal extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addGap(57, 57, 57))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         jLabel11.setText("Nombre");
@@ -219,6 +217,8 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
+        errores.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jd_agregarLayout = new javax.swing.GroupLayout(jd_agregar.getContentPane());
         jd_agregar.getContentPane().setLayout(jd_agregarLayout);
         jd_agregarLayout.setHorizontalGroup(
@@ -227,15 +227,18 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15)
+                    .addComponent(jLabel13)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel13))
-                .addGap(29, 29, 29)
-                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tf_correo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_telefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb_foto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel11))
+                .addGap(1, 1, 1)
+                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tf_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_agregarLayout.createSequentialGroup()
+                        .addComponent(errores, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(tf_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(110, 110, 110))
             .addGroup(jd_agregarLayout.createSequentialGroup()
                 .addGap(178, 178, 178)
@@ -245,14 +248,16 @@ public class principal extends javax.swing.JFrame {
         jd_agregarLayout.setVerticalGroup(
             jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_agregarLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(38, 38, 38)
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(tf_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(tf_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(errores, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -263,7 +268,7 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(jLabel15))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -321,9 +326,9 @@ public class principal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla_contactos);
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("jLabel1");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        imagen_principal.setBackground(new java.awt.Color(0, 0, 0));
+        imagen_principal.setText("jLabel1");
+        imagen_principal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel4.setText("MIC");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -343,7 +348,7 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(106, 106, 106)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(imagen_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(207, 207, 207)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -353,7 +358,7 @@ public class principal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagen_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -468,7 +473,7 @@ public class principal extends javax.swing.JFrame {
         File archivo = new File("./SimpleGrammarES2.txt");
         FileWriter fw = null;
         BufferedWriter bw = null;
-        ArrayList<String> nombres= new ArrayList();
+        ArrayList<String> nombres = new ArrayList();
         try {
             fw = new FileWriter(archivo);
             bw = new BufferedWriter(fw);
@@ -518,7 +523,7 @@ public class principal extends javax.swing.JFrame {
                     + "<dato12>=Disco;\n"
                     + "<dato13>=Contacto;";
             for (int i = 1; i <= nombres.size(); i++) {
-                texto+= "<dato"+ (i+13)+">=" + nombres.get(i) + ";";
+                texto += "<dato" + (i + 13) + ">=" + nombres.get(i - 1) + ";";
             }
             bw.write(texto);
             bw.flush();
@@ -624,15 +629,19 @@ public class principal extends javax.swing.JFrame {
                 System.out.println("act: " + a.devolver);
 
                 if (a.devolver.equals("Agregar Contacto ")) {
-                    jd_agregar.setVisible(true);
-                    jd_agregar.setLocationRelativeTo(this);
-                    jd_agregar.pack();
                     jd_agregar.setModal(true);
+                    jd_agregar.pack();
+                    jd_agregar.setLocationRelativeTo(this);
+                    jd_agregar.setVisible(true);
                 }
 
                 if (a.devolver.length() > 6) {
                     if (a.devolver.substring(0, 6).equals("Delete")) {
-                        System.out.println(a.devolver.substring(7, a.devolver.length() - 1));
+                        if (a.devolver.length() > 7) {
+                            System.out.println(a.devolver.substring(7, a.devolver.length() - 1));
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Comando No Válido");
+                        }
                     }
                 }
                 if (a.devolver.length() > 9) {
@@ -770,11 +779,46 @@ public class principal extends javax.swing.JFrame {
             archivo = fc.getSelectedFile();
             Image img = Toolkit.getDefaultToolkit().createImage(archivo.getPath()).getScaledInstance(169, 145, 0);
             this.lb_foto.setIcon(new ImageIcon(img));
+            path = archivo.getPath();
         }
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        try {
+
+            if (!tf_telefono.getText().isEmpty()) {
+                errores.setText("");
+                Statement st = con.createStatement();
+                String nombre = tf_nombre.getText();
+                String telefono = tf_telefono.getText();
+                String correo = tf_correo.getText();
+                if (nombre.isEmpty()) {
+                    nombre = "N/A";
+                }
+                st.execute("insert Contacto values ('" + nombre + "','" + telefono + "','" + correo + "','" + path + "')");
+                JOptionPane.showMessageDialog(jd_agregar, "¡Contacto creado con exito!");
+                tf_nombre.setText("");
+                tf_telefono.setText("");
+                tf_correo.setText("");
+                Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(169, 145, 0);
+                lb_foto.setIcon(new ImageIcon(img));
+                jd_agregar.setVisible(false);
+                this.setVisible(true);
+                
+               
+            } else {
+                JOptionPane.showMessageDialog(jd_agregar, "¡Ingrese un número de teléfono!");
+                errores.setText("*");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        path = "user.png";
         refrescar_gramatica();
+
+
     }//GEN-LAST:event_jLabel16MouseClicked
 
     /**
@@ -814,11 +858,12 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel errores;
+    private javax.swing.JLabel imagen_principal;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -840,7 +885,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_agregar;
     private javax.swing.JDialog jd_llamada;
