@@ -36,7 +36,7 @@ public class principal extends javax.swing.JFrame {
         this.jDialog1.pack();
         this.jDialog1.setLocationRelativeTo(this);
         this.jDialog1.setVisible(true);
-        Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(169, 145, 0);
+        Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(227, 173, 0);
         lb_foto.setIcon(new ImageIcon(img));
         imagen_principal.setIcon(new ImageIcon(img));
         try {
@@ -436,6 +436,10 @@ public class principal extends javax.swing.JFrame {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select* from Contacto");
             DefaultTableModel m = (DefaultTableModel) tabla_contactos.getModel();
+            int size = m.getRowCount();
+            for (int i = 0; i < size; i++) {
+                m.removeRow(0);
+            }
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String nombre = rs.getString(2);
@@ -446,6 +450,10 @@ public class principal extends javax.swing.JFrame {
             }
             rs = st.executeQuery("select a.Nombre,b.fecha,b.Duracion from dbo.Contacto a inner join dbo.Llamada b on a.ID_contacto=b.ID_contacto");
             DefaultTableModel n = (DefaultTableModel) tabla_llamadas.getModel();
+            size = n.getRowCount();
+            for (int i = 0; i < size; i++) {
+                n.removeRow(0);
+            }
             while (rs.next()) {
                 String nombre = rs.getString(1);
                 Date fecha = rs.getDate(2);
@@ -456,6 +464,10 @@ public class principal extends javax.swing.JFrame {
             rs = st.executeQuery("select a.Nombre,b.Contenido,(cast(day(b.Fecha)as nvarchar)+'/'+cast(month(b.Fecha)as nvarchar)+'/'+cast(year(b.Fecha)as nvarchar))as fecha,cast(DATEPART([hour], b.Fecha)as nvarchar)+':'+cast(DATEPART([MINUTE], b.Fecha)as nvarchar) as Hora\n"
                     + "from dbo.Contacto a inner join dbo.Mensaje b on a.ID_contacto=b.ID_contacto");
             DefaultTableModel o = (DefaultTableModel) tabla_mensajes.getModel();
+            size = o.getRowCount();
+            for (int i = 0; i < size; i++) {
+                o.removeRow(0);
+            }
             while (rs.next()) {
                 String nombre = rs.getString(1);
                 String contenido = rs.getString(2);
@@ -638,7 +650,7 @@ public class principal extends javax.swing.JFrame {
                 if (a.devolver.length() > 6) {
                     if (a.devolver.substring(0, 6).equals("Delete")) {
                         if (a.devolver.length() > 7) {
-                            System.out.println(a.devolver.substring(7, a.devolver.length() - 1));
+                            delete_contacto(a.devolver.substring(7, a.devolver.length()-1));
                         } else {
                             JOptionPane.showMessageDialog(this, "Comando No Válido");
                         }
@@ -797,6 +809,7 @@ public class principal extends javax.swing.JFrame {
                 }
                 st.execute("insert Contacto values ('" + nombre + "','" + telefono + "','" + correo + "','" + path + "')");
                 JOptionPane.showMessageDialog(jd_agregar, "¡Contacto creado con exito!");
+                refresh();
                 tf_nombre.setText("");
                 tf_telefono.setText("");
                 tf_correo.setText("");
@@ -804,8 +817,7 @@ public class principal extends javax.swing.JFrame {
                 lb_foto.setIcon(new ImageIcon(img));
                 jd_agregar.setVisible(false);
                 this.setVisible(true);
-                
-               
+
             } else {
                 JOptionPane.showMessageDialog(jd_agregar, "¡Ingrese un número de teléfono!");
                 errores.setText("*");
@@ -820,6 +832,19 @@ public class principal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jLabel16MouseClicked
+    void delete_contacto(String nombre) {
+        try {
+            System.out.println(nombre+"1");
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '"+nombre+"'");
+            rs.next();
+            rs.getString(2);
+            st.execute("delete Contacto from Contacto where Nombre = '"+nombre+"'");
+            refresh();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
+        }
+    }
 
     /**
      * @param args the command line arguments

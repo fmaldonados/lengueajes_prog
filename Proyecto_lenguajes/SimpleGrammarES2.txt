@@ -31,4 +31,4 @@ public <sentence> =
 <dato10>=Salir;
 <dato11>=Brian;
 <dato12>=Disco;
-<dato13>=Contacto;<dato14>=dsaasd;<dato15>=ddsad;
+<dato13>=Contacto;<dato14>=Kenneth;<dato15>=Kate;
