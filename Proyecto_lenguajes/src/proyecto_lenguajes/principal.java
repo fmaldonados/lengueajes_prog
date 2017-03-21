@@ -37,7 +37,9 @@ public class principal extends javax.swing.JFrame {
         this.jDialog1.setLocationRelativeTo(this);
         this.jDialog1.setVisible(true);
         Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(227, 173, 0);
-        lb_foto.setIcon(new ImageIcon(img));
+        Image img2 = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(169, 145, 0);
+        lb_foto.setIcon(new ImageIcon(img2));
+        imagen_modificar.setIcon(new ImageIcon(img2));
         imagen_principal.setIcon(new ImageIcon(img));
         try {
             recognizer = Central.createRecognizer(new EngineModeDesc(Locale.ROOT));
@@ -65,7 +67,7 @@ public class principal extends javax.swing.JFrame {
     Recognizer recognizer;
     boolean first = true;
     String path = "user.png";
-
+    String modificar="";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,6 +102,17 @@ public class principal extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         errores = new javax.swing.JLabel();
+        jd_modificar = new javax.swing.JDialog();
+        nombre_modificar = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        telefono_modificar = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        correo_modificar = new javax.swing.JTextField();
+        imagen_modificar = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        errores2 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -269,6 +282,83 @@ public class principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(58, Short.MAX_VALUE))
+        );
+
+        jLabel14.setText("Teléfono");
+
+        jLabel17.setText("Correo");
+
+        imagen_modificar.setBackground(new java.awt.Color(0, 0, 0));
+        imagen_modificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel18.setText("Seleccionar");
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
+
+        jLabel19.setText("Guardar");
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
+
+        errores2.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel20.setText("Nombre");
+
+        javax.swing.GroupLayout jd_modificarLayout = new javax.swing.GroupLayout(jd_modificar.getContentPane());
+        jd_modificar.getContentPane().setLayout(jd_modificarLayout);
+        jd_modificarLayout.setHorizontalGroup(
+            jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarLayout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel20))
+                .addGap(1, 1, 1)
+                .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(correo_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombre_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagen_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_modificarLayout.createSequentialGroup()
+                        .addComponent(errores2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(telefono_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(110, 110, 110))
+            .addGroup(jd_modificarLayout.createSequentialGroup()
+                .addGap(178, 178, 178)
+                .addComponent(jLabel19)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_modificarLayout.setVerticalGroup(
+            jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_modificarLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(nombre_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14)
+                        .addComponent(telefono_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(errores2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(correo_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imagen_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -617,6 +707,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        path="user.png";
         try {
             if (!mic_activado) {
                 mic_activado = true;
@@ -658,7 +749,28 @@ public class principal extends javax.swing.JFrame {
                 }
                 if (a.devolver.length() > 9) {
                     if (a.devolver.substring(0, 9).equals("Modificar")) {
-                        System.out.println("yeay");
+                        if (a.devolver.length()>10) {
+                            try{
+                            Statement st = con.createStatement();
+                            ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '"+a.devolver.substring(10,a.devolver.length()-1)+"'");
+                            rs.next();
+                            nombre_modificar.setText(rs.getString(2));
+                            telefono_modificar.setText(rs.getString(3));
+                            correo_modificar.setText(rs.getString(4));
+                            Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(169, 145, 0);
+                            if (!rs.getString(5).equals("user.png")){      
+                                this.imagen_modificar.setIcon(new ImageIcon(img));
+                                path=rs.getString(5);
+                            }
+                            modificar=rs.getString(2);
+                            jd_modificar.setModal(true);
+                            jd_modificar.pack();
+                            jd_modificar.setLocationRelativeTo(this);
+                            jd_modificar.setVisible(true);
+                            }catch(Exception e){
+                                JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
+                            }
+                        }
                     }
                 }
                 if (a.devolver.equals("Salir ")) {
@@ -805,7 +917,7 @@ public class principal extends javax.swing.JFrame {
                 String telefono = tf_telefono.getText();
                 String correo = tf_correo.getText();
                 if (nombre.isEmpty()) {
-                    nombre = "N/A";
+                    nombre = "Unknow";
                 }
                 st.execute("insert Contacto values ('" + nombre + "','" + telefono + "','" + correo + "','" + path + "')");
                 JOptionPane.showMessageDialog(jd_agregar, "¡Contacto creado con exito!");
@@ -832,6 +944,48 @@ public class principal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+         JFileChooser fc = new JFileChooser();
+        FileFilter filtro = new FileNameExtensionFilter("Imagenes", "png", "jpg", "gif");
+        fc.setFileFilter(filtro);
+        File archivo;
+        int op = fc.showOpenDialog(this);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            archivo = fc.getSelectedFile();
+            Image img = Toolkit.getDefaultToolkit().createImage(archivo.getPath()).getScaledInstance(169, 145, 0);
+            this.imagen_modificar.setIcon(new ImageIcon(img));
+            path = archivo.getPath();
+        }
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        try {
+            if (!telefono_modificar.getText().isEmpty()) {
+                errores2.setText("");
+                Statement st = con.createStatement();
+                if (!nombre_modificar.getText().isEmpty()) {
+                    st.execute("update Contacto set Nombre = '"+nombre_modificar.getText()+"' where Nombre='"+modificar+"'");
+                }else{
+                    st.execute("update Contacto set Nombre = 'Unknow' where Nombre='"+modificar+"'");
+                }
+                st.execute("update Contacto set Telefono = '"+telefono_modificar.getText()+"' where Nombre='"+modificar+"'");
+                st.execute("update Contacto set Correo = '"+correo_modificar.getText()+"' where Nombre='"+modificar+"'");
+                st.execute("update Contacto set Imagen = '"+path+"' where Nombre='"+modificar+"'");
+                path="user.png";
+                refresh();
+            } else {
+                JOptionPane.showMessageDialog(jd_agregar, "¡Ingrese un número de teléfono!");
+                errores2.setText("*");
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        path = "user.png";
+        refrescar_gramatica();
+    }//GEN-LAST:event_jLabel19MouseClicked
     void delete_contacto(String nombre) {
         try {
             System.out.println(nombre+"1");
@@ -883,7 +1037,10 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField correo_modificar;
     private javax.swing.JLabel errores;
+    private javax.swing.JLabel errores2;
+    private javax.swing.JLabel imagen_modificar;
     private javax.swing.JLabel imagen_principal;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
@@ -893,9 +1050,14 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -913,12 +1075,15 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_agregar;
     private javax.swing.JDialog jd_llamada;
+    private javax.swing.JDialog jd_modificar;
     private javax.swing.JPasswordField jt_password;
     private javax.swing.JTextField jt_username;
     private javax.swing.JLabel lb_foto;
+    private javax.swing.JTextField nombre_modificar;
     private javax.swing.JTable tabla_contactos;
     private javax.swing.JTable tabla_llamadas;
     private javax.swing.JTable tabla_mensajes;
+    private javax.swing.JTextField telefono_modificar;
     private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_telefono;
