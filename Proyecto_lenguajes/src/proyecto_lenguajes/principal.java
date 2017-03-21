@@ -414,6 +414,11 @@ public class principal extends javax.swing.JFrame {
                 "Nombre", "Telefono", "Correo"
             }
         ));
+        tabla_contactos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla_contactosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla_contactos);
 
         imagen_principal.setBackground(new java.awt.Color(0, 0, 0));
@@ -986,6 +991,29 @@ public class principal extends javax.swing.JFrame {
         path = "user.png";
         refrescar_gramatica();
     }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void tabla_contactosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_contactosMouseClicked
+        if (tabla_contactos.getSelectedRow() >= 0) {
+            try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '"+tabla_contactos.getValueAt(tabla_contactos.getSelectedRow(), 0).toString()+"'");
+            rs.next();
+            
+            if (!rs.getString(5).equals("user.png")){
+                Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(227, 173, 0);
+                imagen_principal.setIcon(new ImageIcon(img));
+            }else{
+                Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(227, 173, 0);
+                imagen_principal.setIcon(new ImageIcon(img));
+            }
+            }catch(Exception e){
+                
+            }
+        }else{
+            Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(227, 173, 0);
+            imagen_principal.setIcon(new ImageIcon(img));
+        }
+    }//GEN-LAST:event_tabla_contactosMouseClicked
     void delete_contacto(String nombre) {
         try {
             System.out.println(nombre+"1");
