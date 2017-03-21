@@ -67,7 +67,8 @@ public class principal extends javax.swing.JFrame {
     Recognizer recognizer;
     boolean first = true;
     String path = "user.png";
-    String modificar="";
+    String modificar = "";
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,6 +114,15 @@ public class principal extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         errores2 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jd_mensaje = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        contenido_mensaje = new javax.swing.JTextArea();
+        jLabel21 = new javax.swing.JLabel();
+        contacto_mensaje = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        telefono_mensaje = new javax.swing.JLabel();
+        id_mensaje = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -361,6 +371,68 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
+        jLabel1.setText("Contacto:");
+
+        contenido_mensaje.setColumns(20);
+        contenido_mensaje.setRows(5);
+        jScrollPane4.setViewportView(contenido_mensaje);
+
+        jLabel21.setText("Send");
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
+            }
+        });
+
+        contacto_mensaje.setText("text");
+
+        jLabel23.setText("Numero:");
+
+        telefono_mensaje.setText("text");
+
+        id_mensaje.setText("ID");
+
+        javax.swing.GroupLayout jd_mensajeLayout = new javax.swing.GroupLayout(jd_mensaje.getContentPane());
+        jd_mensaje.getContentPane().setLayout(jd_mensajeLayout);
+        jd_mensajeLayout.setHorizontalGroup(
+            jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_mensajeLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
+            .addGroup(jd_mensajeLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(id_mensaje)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_mensajeLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(contacto_mensaje)
+                        .addGap(122, 122, 122)
+                        .addComponent(jLabel23)
+                        .addGap(18, 18, 18)
+                        .addComponent(telefono_mensaje)))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        jd_mensajeLayout.setVerticalGroup(
+            jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mensajeLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(id_mensaje)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(contacto_mensaje)
+                    .addComponent(jLabel23)
+                    .addComponent(telefono_mensaje))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tabla_llamadas.setModel(new javax.swing.table.DefaultTableModel(
@@ -601,17 +673,18 @@ public class principal extends javax.swing.JFrame {
                     + "[<dato10>]\n"
                     + "[<dato11>]\n"
                     + "[<dato12>]\n"
-                    + "[<dato13>]";
+                    + "[<dato13>]\n"
+                    + "[<dato14>]";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select * from dbo.Contacto");
-            int length = 13;
+            int length = 14;
             while (rs.next()) {
                 length++;
                 nombres.add(rs.getString(2));
                 texto += "\n[<dato" + length + ">]";
             }
-            texto += "\n[<dato1><dato2><dato3><dato4><dato5><dato6><dato7><dato8><dato9><dato10><dato11><dato12><dato13>";
-            for (int i = 14; i <= length; i++) {
+            texto += "\n[<dato1><dato2><dato3><dato4><dato5><dato6><dato7><dato8><dato9><dato10><dato11><dato12><dato13><dato14>";
+            for (int i = 15; i <= length; i++) {
                 texto += "<dato" + i + ">";
             }
             texto += "];";
@@ -628,9 +701,10 @@ public class principal extends javax.swing.JFrame {
                     + "<dato10>=Salir;\n"
                     + "<dato11>=Brian;\n"
                     + "<dato12>=Disco;\n"
-                    + "<dato13>=Contacto;";
+                    + "<dato13>=Contacto;\n"
+                    + "<dato14>=Search;";
             for (int i = 1; i <= nombres.size(); i++) {
-                texto += "<dato" + (i + 13) + ">=" + nombres.get(i - 1) + ";";
+                texto += "<dato" + (i + 14) + ">=" + nombres.get(i - 1) + ";";
             }
             bw.write(texto);
             bw.flush();
@@ -712,7 +786,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        path="user.png";
+        path = "user.png";
         try {
             if (!mic_activado) {
                 mic_activado = true;
@@ -746,7 +820,7 @@ public class principal extends javax.swing.JFrame {
                 if (a.devolver.length() > 6) {
                     if (a.devolver.substring(0, 6).equals("Delete")) {
                         if (a.devolver.length() > 7) {
-                            delete_contacto(a.devolver.substring(7, a.devolver.length()-1));
+                            delete_contacto(a.devolver.substring(7, a.devolver.length() - 1));
                         } else {
                             JOptionPane.showMessageDialog(this, "Comando No Válido");
                         }
@@ -754,25 +828,46 @@ public class principal extends javax.swing.JFrame {
                 }
                 if (a.devolver.length() > 9) {
                     if (a.devolver.substring(0, 9).equals("Modificar")) {
-                        if (a.devolver.length()>10) {
-                            try{
-                            Statement st = con.createStatement();
-                            ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '"+a.devolver.substring(10,a.devolver.length()-1)+"'");
-                            rs.next();
-                            nombre_modificar.setText(rs.getString(2));
-                            telefono_modificar.setText(rs.getString(3));
-                            correo_modificar.setText(rs.getString(4));
-                            Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(169, 145, 0);
-                            if (!rs.getString(5).equals("user.png")){      
-                                this.imagen_modificar.setIcon(new ImageIcon(img));
-                                path=rs.getString(5);
+                        if (a.devolver.length() > 10) {
+                            try {
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + a.devolver.substring(10, a.devolver.length() - 1) + "'");
+                                rs.next();
+                                nombre_modificar.setText(rs.getString(2));
+                                telefono_modificar.setText(rs.getString(3));
+                                correo_modificar.setText(rs.getString(4));
+                                Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(169, 145, 0);
+                                if (!rs.getString(5).equals("user.png")) {
+                                    this.imagen_modificar.setIcon(new ImageIcon(img));
+                                    path = rs.getString(5);
+                                }
+                                modificar = rs.getString(2);
+                                jd_modificar.setModal(true);
+                                jd_modificar.pack();
+                                jd_modificar.setLocationRelativeTo(this);
+                                jd_modificar.setVisible(true);
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
                             }
-                            modificar=rs.getString(2);
-                            jd_modificar.setModal(true);
-                            jd_modificar.pack();
-                            jd_modificar.setLocationRelativeTo(this);
-                            jd_modificar.setVisible(true);
-                            }catch(Exception e){
+                        }
+                    }
+                }
+                if (a.devolver.length() > 7) {
+                    if (a.devolver.substring(0, 7).equals("Mensaje")) {
+                        if (a.devolver.length() > 8) {
+                            try {
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + a.devolver.substring(8, a.devolver.length() - 1) + "'");
+                                rs.next();
+
+                                contacto_mensaje.setText(rs.getString(2));
+                                telefono_mensaje.setText(rs.getString(3));
+                                id_mensaje.setText(Integer.toString(rs.getInt(1)));
+                                jd_mensaje.setModal(true);
+                                jd_mensaje.pack();
+                                jd_mensaje.setLocationRelativeTo(this);
+                                jd_mensaje.setVisible(true);
+                            } catch (Exception e) {
                                 JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
                             }
                         }
@@ -951,7 +1046,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-         JFileChooser fc = new JFileChooser();
+        JFileChooser fc = new JFileChooser();
         FileFilter filtro = new FileNameExtensionFilter("Imagenes", "png", "jpg", "gif");
         fc.setFileFilter(filtro);
         File archivo;
@@ -970,14 +1065,14 @@ public class principal extends javax.swing.JFrame {
                 errores2.setText("");
                 Statement st = con.createStatement();
                 if (!nombre_modificar.getText().isEmpty()) {
-                    st.execute("update Contacto set Nombre = '"+nombre_modificar.getText()+"' where Nombre='"+modificar+"'");
-                }else{
-                    st.execute("update Contacto set Nombre = 'Unknow' where Nombre='"+modificar+"'");
+                    st.execute("update Contacto set Nombre = '" + nombre_modificar.getText() + "' where Nombre='" + modificar + "'");
+                } else {
+                    st.execute("update Contacto set Nombre = 'Unknow' where Nombre='" + modificar + "'");
                 }
-                st.execute("update Contacto set Telefono = '"+telefono_modificar.getText()+"' where Nombre='"+modificar+"'");
-                st.execute("update Contacto set Correo = '"+correo_modificar.getText()+"' where Nombre='"+modificar+"'");
-                st.execute("update Contacto set Imagen = '"+path+"' where Nombre='"+modificar+"'");
-                path="user.png";
+                st.execute("update Contacto set Telefono = '" + telefono_modificar.getText() + "' where Nombre='" + modificar + "'");
+                st.execute("update Contacto set Correo = '" + correo_modificar.getText() + "' where Nombre='" + modificar + "'");
+                st.execute("update Contacto set Imagen = '" + path + "' where Nombre='" + modificar + "'");
+                path = "user.png";
                 refresh();
             } else {
                 JOptionPane.showMessageDialog(jd_agregar, "¡Ingrese un número de teléfono!");
@@ -994,34 +1089,50 @@ public class principal extends javax.swing.JFrame {
 
     private void tabla_contactosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_contactosMouseClicked
         if (tabla_contactos.getSelectedRow() >= 0) {
-            try{
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '"+tabla_contactos.getValueAt(tabla_contactos.getSelectedRow(), 0).toString()+"'");
-            rs.next();
-            
-            if (!rs.getString(5).equals("user.png")){
-                Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(227, 173, 0);
-                imagen_principal.setIcon(new ImageIcon(img));
-            }else{
-                Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(227, 173, 0);
-                imagen_principal.setIcon(new ImageIcon(img));
+            try {
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + tabla_contactos.getValueAt(tabla_contactos.getSelectedRow(), 0).toString() + "'");
+                rs.next();
+
+                if (!rs.getString(5).equals("user.png")) {
+                    Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(227, 173, 0);
+                    imagen_principal.setIcon(new ImageIcon(img));
+                } else {
+                    Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(227, 173, 0);
+                    imagen_principal.setIcon(new ImageIcon(img));
+                }
+            } catch (Exception e) {
+
             }
-            }catch(Exception e){
-                
-            }
-        }else{
+        } else {
             Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(227, 173, 0);
             imagen_principal.setIcon(new ImageIcon(img));
         }
     }//GEN-LAST:event_tabla_contactosMouseClicked
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        if (!contenido_mensaje.getText().isEmpty()) {
+            try {
+                Statement st = con.createStatement();
+                st.execute("insert Mensaje values (" + Integer.parseInt(id_mensaje.getText()) + ",'" + contenido_mensaje.getText() + "', getdate())");
+                refresh();
+                JOptionPane.showMessageDialog(jd_mensaje, "¡Mensaje enviado con exito!");
+                jd_agregar.setVisible(false);
+                contenido_mensaje.setText("");
+            } catch (Exception e) {
+                
+            }
+        } else {
+            JOptionPane.showMessageDialog(jd_mensaje, "¡El mensaje esta vacio!");
+        }
+    }//GEN-LAST:event_jLabel21MouseClicked
     void delete_contacto(String nombre) {
         try {
-            System.out.println(nombre+"1");
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '"+nombre+"'");
+            ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + nombre + "'");
             rs.next();
             rs.getString(2);
-            st.execute("delete Contacto from Contacto where Nombre = '"+nombre+"'");
+            st.execute("delete Contacto from Contacto where Nombre = '" + nombre + "'");
             refresh();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
@@ -1065,15 +1176,19 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel contacto_mensaje;
+    private javax.swing.JTextArea contenido_mensaje;
     private javax.swing.JTextField correo_modificar;
     private javax.swing.JLabel errores;
     private javax.swing.JLabel errores2;
+    private javax.swing.JLabel id_mensaje;
     private javax.swing.JLabel imagen_modificar;
     private javax.swing.JLabel imagen_principal;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1086,6 +1201,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1099,10 +1216,12 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_agregar;
     private javax.swing.JDialog jd_llamada;
+    private javax.swing.JDialog jd_mensaje;
     private javax.swing.JDialog jd_modificar;
     private javax.swing.JPasswordField jt_password;
     private javax.swing.JTextField jt_username;
@@ -1111,6 +1230,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTable tabla_contactos;
     private javax.swing.JTable tabla_llamadas;
     private javax.swing.JTable tabla_mensajes;
+    private javax.swing.JLabel telefono_mensaje;
     private javax.swing.JTextField telefono_modificar;
     private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_nombre;

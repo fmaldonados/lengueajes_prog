@@ -19,7 +19,8 @@ public <sentence> =
 [<dato14>]
 [<dato15>]
 [<dato16>]
-[<dato1><dato2><dato3><dato4><dato5><dato6><dato7><dato8><dato9><dato10><dato11><dato12><dato13><dato14><dato15><dato16>];<dato0>=Agregar;
+[<dato17>]
+[<dato1><dato2><dato3><dato4><dato5><dato6><dato7><dato8><dato9><dato10><dato11><dato12><dato13><dato14><dato15><dato16><dato17>];<dato0>=Agregar;
 <dato1>=Modificar;
 <dato2>=User;
 <dato3>=Delete;
@@ -32,4 +33,5 @@ public <sentence> =
 <dato10>=Salir;
 <dato11>=Brian;
 <dato12>=Disco;
-<dato13>=Contacto;<dato14>=Kenneth;<dato15>=Kate;<dato16>=Peter;
+<dato13>=Contacto;
+<dato14>=Search;<dato15>=Kenneth;<dato16>=Kate;<dato17>=Peter;
