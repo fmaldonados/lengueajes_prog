@@ -120,9 +120,9 @@ public class principal extends javax.swing.JFrame {
         jDialog1 = new javax.swing.JDialog();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        label_log = new javax.swing.JLabel();
         jt_username = new javax.swing.JTextField();
         jt_password = new javax.swing.JPasswordField();
-        jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
@@ -131,7 +131,7 @@ public class principal extends javax.swing.JFrame {
         nombre_llamada = new javax.swing.JLabel();
         tiempo = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        mic_sim = new javax.swing.JLabel();
         jd_agregar = new javax.swing.JDialog();
         jLabel11 = new javax.swing.JLabel();
         tf_nombre = new javax.swing.JTextField();
@@ -140,8 +140,8 @@ public class principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         tf_correo = new javax.swing.JTextField();
         lb_foto = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        folder_agregar = new javax.swing.JLabel();
+        guardar_agregar = new javax.swing.JLabel();
         errores = new javax.swing.JLabel();
         jd_modificar = new javax.swing.JDialog();
         nombre_modificar = new javax.swing.JTextField();
@@ -150,15 +150,15 @@ public class principal extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         correo_modificar = new javax.swing.JTextField();
         imagen_modificar = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        folder_modificar = new javax.swing.JLabel();
+        guardar_modificar = new javax.swing.JLabel();
         errores2 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jd_mensaje = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         contenido_mensaje = new javax.swing.JTextArea();
-        jLabel21 = new javax.swing.JLabel();
+        lb_send = new javax.swing.JLabel();
         contacto_mensaje = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         telefono_mensaje = new javax.swing.JLabel();
@@ -167,16 +167,16 @@ public class principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_llamadas = new javax.swing.JTable();
-        jLabel9 = new javax.swing.JLabel();
+        mic_llamada = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_contactos = new javax.swing.JTable();
         imagen_principal = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        mic_contacto = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla_mensajes = new javax.swing.JTable();
-        jLabel10 = new javax.swing.JLabel();
+        mic_mensaje = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tabla_bitacora = new javax.swing.JTable();
@@ -188,16 +188,16 @@ public class principal extends javax.swing.JFrame {
 
         jLabel3.setText("Password:");
         jDialog1.getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 122, -1, -1));
-        jDialog1.getContentPane().add(jt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 93, 177, -1));
-        jDialog1.getContentPane().add(jt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 147, 175, -1));
 
-        jButton4.setText("Activar Voz");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        label_log.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/microphone_med.png"))); // NOI18N
+        label_log.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+                label_logMouseClicked(evt);
             }
         });
-        jDialog1.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 185, -1, -1));
+        jDialog1.getContentPane().add(label_log, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 30, 40));
+        jDialog1.getContentPane().add(jt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 93, 177, -1));
+        jDialog1.getContentPane().add(jt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 147, 175, -1));
 
         jButton6.setText("Log In");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -205,7 +205,7 @@ public class principal extends javax.swing.JFrame {
                 jButton6MouseClicked(evt);
             }
         });
-        jDialog1.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 185, 87, -1));
+        jDialog1.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 87, -1));
         jDialog1.getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 236, 315, 10));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/Blur-1-1024x667.png"))); // NOI18N
@@ -213,7 +213,7 @@ public class principal extends javax.swing.JFrame {
         jDialog1.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 350));
 
         imagen_llamada.setText("jLabel5");
-        imagen_llamada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        imagen_llamada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         nombre_llamada.setText("Nombre de Contacto");
 
@@ -226,10 +226,10 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
-        jLabel24.setText("Activar voz");
-        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+        mic_sim.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/microphone_med.png"))); // NOI18N
+        mic_sim.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel24MouseClicked(evt);
+                mic_simMouseClicked(evt);
             }
         });
 
@@ -239,41 +239,47 @@ public class principal extends javax.swing.JFrame {
             jd_llamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_llamadaLayout.createSequentialGroup()
                 .addGroup(jd_llamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_llamadaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel24))
                     .addGroup(jd_llamadaLayout.createSequentialGroup()
-                        .addGroup(jd_llamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jd_llamadaLayout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(imagen_llamada, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jd_llamadaLayout.createSequentialGroup()
-                                .addGap(147, 147, 147)
-                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jd_llamadaLayout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(tiempo))
-                            .addGroup(jd_llamadaLayout.createSequentialGroup()
-                                .addGap(133, 133, 133)
-                                .addComponent(nombre_llamada)))
-                        .addGap(0, 72, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(147, 147, 147)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_llamadaLayout.createSequentialGroup()
+                        .addGap(155, 155, 155)
+                        .addComponent(tiempo))
+                    .addGroup(jd_llamadaLayout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(nombre_llamada)))
+                .addContainerGap(181, Short.MAX_VALUE))
+            .addGroup(jd_llamadaLayout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(imagen_llamada, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mic_sim)
+                .addGap(37, 37, 37))
         );
         jd_llamadaLayout.setVerticalGroup(
             jd_llamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_llamadaLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imagen_llamada, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jd_llamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_llamadaLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(imagen_llamada, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_llamadaLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(mic_sim)))
                 .addGap(27, 27, 27)
                 .addComponent(nombre_llamada)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tiempo)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
+
+        jd_agregar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jd_agregarMouseMoved(evt);
+            }
+        });
 
         jLabel11.setText("Nombre");
 
@@ -282,19 +288,29 @@ public class principal extends javax.swing.JFrame {
         jLabel13.setText("Correo");
 
         lb_foto.setBackground(new java.awt.Color(0, 0, 0));
-        lb_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lb_foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
-        jLabel15.setText("Seleccionar");
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+        folder_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/open-folder.png"))); // NOI18N
+        folder_agregar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                folder_agregarMouseMoved(evt);
+            }
+        });
+        folder_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel15MouseClicked(evt);
+                folder_agregarMouseClicked(evt);
             }
         });
 
-        jLabel16.setText("Guardar");
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+        guardar_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/success.png"))); // NOI18N
+        guardar_agregar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                guardar_agregarMouseMoved(evt);
+            }
+        });
+        guardar_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
+                guardar_agregarMouseClicked(evt);
             }
         });
 
@@ -305,9 +321,9 @@ public class principal extends javax.swing.JFrame {
         jd_agregarLayout.setHorizontalGroup(
             jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_agregarLayout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel15)
+                    .addComponent(folder_agregar)
                     .addComponent(jLabel13)
                     .addComponent(jLabel12)
                     .addComponent(jLabel11))
@@ -322,8 +338,8 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(tf_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(110, 110, 110))
             .addGroup(jd_agregarLayout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addComponent(jLabel16)
+                .addGap(147, 147, 147)
+                .addComponent(guardar_agregar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_agregarLayout.setVerticalGroup(
@@ -343,33 +359,49 @@ public class principal extends javax.swing.JFrame {
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(tf_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addGap(58, 58, 58)
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(folder_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(guardar_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
+
+        jd_modificar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jd_modificarMouseMoved(evt);
+            }
+        });
 
         jLabel14.setText("Teléfono");
 
         jLabel17.setText("Correo");
 
         imagen_modificar.setBackground(new java.awt.Color(0, 0, 0));
-        imagen_modificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        imagen_modificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
-        jLabel18.setText("Seleccionar");
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+        folder_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/open-folder.png"))); // NOI18N
+        folder_modificar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                folder_modificarMouseMoved(evt);
+            }
+        });
+        folder_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel18MouseClicked(evt);
+                folder_modificarMouseClicked(evt);
             }
         });
 
-        jLabel19.setText("Guardar");
-        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+        guardar_modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/success.png"))); // NOI18N
+        guardar_modificar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                guardar_modificarMouseMoved(evt);
+            }
+        });
+        guardar_modificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel19MouseClicked(evt);
+                guardar_modificarMouseClicked(evt);
             }
         });
 
@@ -382,12 +414,13 @@ public class principal extends javax.swing.JFrame {
         jd_modificarLayout.setHorizontalGroup(
             jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_modificarLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel17)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel20))
+                    .addComponent(jLabel20)
+                    .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(folder_modificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(1, 1, 1)
                 .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(correo_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -399,8 +432,8 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(telefono_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(110, 110, 110))
             .addGroup(jd_modificarLayout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addComponent(jLabel19)
+                .addGap(170, 170, 170)
+                .addComponent(guardar_modificar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_modificarLayout.setVerticalGroup(
@@ -422,12 +455,18 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(correo_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imagen_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18))
+                    .addComponent(folder_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagen_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addComponent(guardar_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
         );
+
+        jd_mensaje.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jd_mensajeMouseMoved(evt);
+            }
+        });
 
         jLabel1.setText("Contacto:");
 
@@ -435,10 +474,15 @@ public class principal extends javax.swing.JFrame {
         contenido_mensaje.setRows(5);
         jScrollPane4.setViewportView(contenido_mensaje);
 
-        jLabel21.setText("Send");
-        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+        lb_send.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/send.png"))); // NOI18N
+        lb_send.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lb_sendMouseMoved(evt);
+            }
+        });
+        lb_send.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel21MouseClicked(evt);
+                lb_sendMouseClicked(evt);
             }
         });
 
@@ -454,23 +498,21 @@ public class principal extends javax.swing.JFrame {
         jd_mensaje.getContentPane().setLayout(jd_mensajeLayout);
         jd_mensajeLayout.setHorizontalGroup(
             jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_mensajeLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
             .addGroup(jd_mensajeLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(id_mensaje)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jd_mensajeLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(contacto_mensaje)
-                        .addGap(122, 122, 122)
-                        .addComponent(jLabel23)
-                        .addGap(18, 18, 18)
-                        .addComponent(telefono_mensaje)))
+                .addGroup(jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lb_send, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(id_mensaje)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jd_mensajeLayout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(contacto_mensaje)
+                            .addGap(122, 122, 122)
+                            .addComponent(jLabel23)
+                            .addGap(18, 18, 18)
+                            .addComponent(telefono_mensaje))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jd_mensajeLayout.setVerticalGroup(
@@ -486,9 +528,9 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(telefono_mensaje))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lb_send, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -503,11 +545,11 @@ public class principal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tabla_llamadas);
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/muted.png"))); // NOI18N
-        jLabel9.setText("MIC");
-        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+        mic_llamada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/microphone.png"))); // NOI18N
+        mic_llamada.setText("MIC");
+        mic_llamada.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel9MouseClicked(evt);
+                mic_llamadaMouseClicked(evt);
             }
         });
 
@@ -522,7 +564,7 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(mic_llamada, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -531,7 +573,7 @@ public class principal extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mic_llamada, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -554,13 +596,13 @@ public class principal extends javax.swing.JFrame {
 
         imagen_principal.setBackground(new java.awt.Color(0, 0, 0));
         imagen_principal.setText("jLabel1");
-        imagen_principal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        imagen_principal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/muted.png"))); // NOI18N
-        jLabel4.setText("MIC");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        mic_contacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/microphone.png"))); // NOI18N
+        mic_contacto.setText("MIC");
+        mic_contacto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                mic_contactoMouseClicked(evt);
             }
         });
 
@@ -578,7 +620,7 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(200, 200, 200)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(mic_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -589,7 +631,7 @@ public class principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mic_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -605,10 +647,10 @@ public class principal extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tabla_mensajes);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/muted.png"))); // NOI18N
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+        mic_mensaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/microphone.png"))); // NOI18N
+        mic_mensaje.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel10MouseClicked(evt);
+                mic_mensajeMouseClicked(evt);
             }
         });
 
@@ -623,7 +665,7 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(197, 197, 197)
-                        .addComponent(jLabel10)))
+                        .addComponent(mic_mensaje)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -632,7 +674,7 @@ public class principal extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mic_mensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(85, Short.MAX_VALUE))
         );
 
@@ -880,68 +922,15 @@ public class principal extends javax.swing.JFrame {
         this.setVisible(true);
     }//GEN-LAST:event_jButton6MouseClicked
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-
-        try {
-            if (!mic_activado) {
-                mic_activado = true;
-                recognizer.resume();
-                recognizer.allocate();
-                FileReader grammar1 = new FileReader("./SimpleGrammarES2.txt");
-
-                RuleGrammar rg = recognizer.loadJSGF(grammar1);
-                rg.setEnabled(true);
-
-                recognizer.addResultListener(a);
-
-                System.out.println("Empieze Dictado");
-                recognizer.commitChanges();
-
-                recognizer.requestFocus();
-
-            } else {
-                mic_activado = false;
-                recognizer.pause();
-
-                System.out.println("act: " + a.devolver);
-                if (a.devolver.contains("User")) {
-                    if (a.devolver.contains("Brian")) {
-                        jt_username.setText("Brian");
-                    }
-                }
-
-                if (a.devolver.contains("Password")) {
-                    if (a.devolver.contains("Disco")) {
-                        jt_password.setText("Disco");
-                    }
-                } else {
-                    if (a.devolver.contains("Salir")) {
-                        recognizer.deallocate();
-                        JOptionPane.showMessageDialog(null, "Gracias por utilizar el programa!");
-                        System.exit(0);
-
-                    }
-                }
-
-                a.devolver = "";
-                recognizer.removeResultListener(a);
-
-            }
-        } catch (Exception e) {
-            System.out.println("Exception en " + e.toString());
-            e.printStackTrace();
-            System.exit(0);
-        }
-
-    }//GEN-LAST:event_jButton4MouseClicked
-
-    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+    private void mic_llamadaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mic_llamadaMouseClicked
         path = "user.png";
         try {
             if (!mic_activado) {
                 mic_activado = true;
                 recognizer.resume();
                 recognizer.allocate();
+                Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("muted.png"));
+                mic_llamada.setIcon(new ImageIcon(im));
                 FileReader grammar1 = new FileReader("./SimpleGrammarES2.txt");
 
                 RuleGrammar rg = recognizer.loadJSGF(grammar1);
@@ -957,7 +946,8 @@ public class principal extends javax.swing.JFrame {
             } else {
                 mic_activado = false;
                 recognizer.pause();
-
+                Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("microphone.png"));
+                mic_llamada.setIcon(new ImageIcon(im));
                 System.out.println("act: " + a.devolver);
                 Statement pt = con.createStatement();
                 pt.execute("insert Bitacora values ('Brian',getdate(),'"+a.devolver+"')");
@@ -1086,15 +1076,17 @@ public class principal extends javax.swing.JFrame {
             e.printStackTrace();
             System.exit(0);
         }
-    }//GEN-LAST:event_jLabel9MouseClicked
+    }//GEN-LAST:event_mic_llamadaMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void mic_contactoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mic_contactoMouseClicked
         path = "user.png";
         try {
             if (!mic_activado) {
                 mic_activado = true;
                 recognizer.resume();
                 recognizer.allocate();
+                Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("muted.png"));
+                mic_contacto.setIcon(new ImageIcon(im));
                 FileReader grammar1 = new FileReader("./SimpleGrammarES2.txt");
 
                 RuleGrammar rg = recognizer.loadJSGF(grammar1);
@@ -1110,7 +1102,8 @@ public class principal extends javax.swing.JFrame {
             } else {
                 mic_activado = false;
                 recognizer.pause();
-
+                Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("microphone_med.png"));
+                mic_contacto.setIcon(new ImageIcon(im));
                 System.out.println("act: " + a.devolver);
                 Statement pt = con.createStatement();
                 pt.execute("insert Bitacora values ('Brian',getdate(),'"+a.devolver+"')");
@@ -1238,15 +1231,17 @@ public class principal extends javax.swing.JFrame {
             e.printStackTrace();
             System.exit(0);
         }
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_mic_contactoMouseClicked
 
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+    private void mic_mensajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mic_mensajeMouseClicked
         path = "user.png";
         try {
             if (!mic_activado) {
                 mic_activado = true;
                 recognizer.resume();
                 recognizer.allocate();
+                Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("muted.png"));
+                mic_mensaje.setIcon(new ImageIcon(im));
                 FileReader grammar1 = new FileReader("./SimpleGrammarES2.txt");
 
                 RuleGrammar rg = recognizer.loadJSGF(grammar1);
@@ -1262,7 +1257,8 @@ public class principal extends javax.swing.JFrame {
             } else {
                 mic_activado = false;
                 recognizer.pause();
-
+                Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("microphone_med.png"));
+                mic_mensaje.setIcon(new ImageIcon(im));
                 System.out.println("act: " + a.devolver);
                 Statement pt = con.createStatement();
                 pt.execute("insert Bitacora values ('Brian',getdate(),'"+a.devolver+"')");
@@ -1391,9 +1387,9 @@ public class principal extends javax.swing.JFrame {
             e.printStackTrace();
             System.exit(0);
         }
-    }//GEN-LAST:event_jLabel10MouseClicked
+    }//GEN-LAST:event_mic_mensajeMouseClicked
 
-    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+    private void folder_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_folder_agregarMouseClicked
         JFileChooser fc = new JFileChooser();
         FileFilter filtro = new FileNameExtensionFilter("Imagenes", "png", "jpg", "gif");
         fc.setFileFilter(filtro);
@@ -1405,9 +1401,9 @@ public class principal extends javax.swing.JFrame {
             this.lb_foto.setIcon(new ImageIcon(img));
             path = archivo.getPath();
         }
-    }//GEN-LAST:event_jLabel15MouseClicked
+    }//GEN-LAST:event_folder_agregarMouseClicked
 
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+    private void guardar_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_agregarMouseClicked
         try {
 
             if (!tf_telefono.getText().isEmpty()) {
@@ -1427,6 +1423,7 @@ public class principal extends javax.swing.JFrame {
                 tf_correo.setText("");
                 Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(169, 145, 0);
                 lb_foto.setIcon(new ImageIcon(img));
+                JOptionPane.showMessageDialog(jd_agregar, "¡Contacto Creado!");
                 jd_agregar.setVisible(false);
                 this.setVisible(true);
 
@@ -1443,9 +1440,9 @@ public class principal extends javax.swing.JFrame {
         refrescar_gramatica();
 
 
-    }//GEN-LAST:event_jLabel16MouseClicked
+    }//GEN-LAST:event_guardar_agregarMouseClicked
 
-    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+    private void folder_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_folder_modificarMouseClicked
         JFileChooser fc = new JFileChooser();
         FileFilter filtro = new FileNameExtensionFilter("Imagenes", "png", "jpg", "gif");
         fc.setFileFilter(filtro);
@@ -1457,9 +1454,9 @@ public class principal extends javax.swing.JFrame {
             this.imagen_modificar.setIcon(new ImageIcon(img));
             path = archivo.getPath();
         }
-    }//GEN-LAST:event_jLabel18MouseClicked
+    }//GEN-LAST:event_folder_modificarMouseClicked
 
-    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+    private void guardar_modificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_modificarMouseClicked
         try {
             if (!telefono_modificar.getText().isEmpty()) {
                 errores2.setText("");
@@ -1474,6 +1471,9 @@ public class principal extends javax.swing.JFrame {
                 st.execute("update Contacto set Imagen = '" + path + "' where Nombre='" + modificar + "'");
                 path = "user.png";
                 refresh();
+                JOptionPane.showMessageDialog(jd_modificar, "¡Contacto Modificado!");
+                jd_modificar.setVisible(false);
+                this.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(jd_agregar, "¡Ingrese un número de teléfono!");
                 errores2.setText("*");
@@ -1485,7 +1485,7 @@ public class principal extends javax.swing.JFrame {
         }
         path = "user.png";
         refrescar_gramatica();
-    }//GEN-LAST:event_jLabel19MouseClicked
+    }//GEN-LAST:event_guardar_modificarMouseClicked
 
     private void tabla_contactosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_contactosMouseClicked
         if (tabla_contactos.getSelectedRow() >= 0) {
@@ -1510,7 +1510,7 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tabla_contactosMouseClicked
 
-    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+    private void lb_sendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_sendMouseClicked
         if (!contenido_mensaje.getText().isEmpty()) {
             try {
                 Statement st = con.createStatement();
@@ -1525,7 +1525,7 @@ public class principal extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(jd_mensaje, "¡El mensaje esta vacio!");
         }
-    }//GEN-LAST:event_jLabel21MouseClicked
+    }//GEN-LAST:event_lb_sendMouseClicked
 
     private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
         c.setAvanzar(false);
@@ -1544,12 +1544,14 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel22MouseClicked
 
-    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+    private void mic_simMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mic_simMouseClicked
         try {
             if (!mic_activado) {
                 mic_activado = true;
                 recognizer.resume();
                 recognizer.allocate();
+                Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("muted_med.png"));
+                mic_sim.setIcon(new ImageIcon(img));
                 FileReader grammar1 = new FileReader("./SimpleGrammarES2.txt");
 
                 RuleGrammar rg = recognizer.loadJSGF(grammar1);
@@ -1565,7 +1567,8 @@ public class principal extends javax.swing.JFrame {
             } else {
                 mic_activado = false;
                 recognizer.pause();
-
+                Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("microphone_med.png"));
+                mic_sim.setIcon(new ImageIcon(img));
                 System.out.println("act: " + a.devolver);
                 Statement pt = con.createStatement();
                 pt.execute("insert Bitacora values ('Brian',getdate(),'"+a.devolver+"')");
@@ -1601,7 +1604,108 @@ public class principal extends javax.swing.JFrame {
             e.printStackTrace();
             System.exit(0);
         }
-    }//GEN-LAST:event_jLabel24MouseClicked
+    }//GEN-LAST:event_mic_simMouseClicked
+
+    private void label_logMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_logMouseClicked
+         try {
+            if (!mic_activado) {
+                mic_activado = true;
+                recognizer.resume();
+                recognizer.allocate();
+                Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("muted_med.png"));
+                label_log.setIcon(new ImageIcon(img));
+                FileReader grammar1 = new FileReader("./SimpleGrammarES2.txt");
+                
+                RuleGrammar rg = recognizer.loadJSGF(grammar1);
+                rg.setEnabled(true);
+
+                recognizer.addResultListener(a);
+
+                System.out.println("Empieze Dictado");
+                recognizer.commitChanges();
+
+                recognizer.requestFocus();
+
+            } else {
+                mic_activado = false;
+                recognizer.pause();
+                Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("microphone_med.png"));
+                label_log.setIcon(new ImageIcon(img));
+                
+                System.out.println("act: " + a.devolver);
+                if (a.devolver.contains("User")) {
+                    if (a.devolver.contains("Brian")) {
+                        jt_username.setText("Brian");
+                    }
+                }
+
+                if (a.devolver.contains("Password")) {
+                    if (a.devolver.contains("Disco")) {
+                        jt_password.setText("Disco");
+                    }
+                } else {
+                    if (a.devolver.contains("Salir")) {
+                        recognizer.deallocate();
+                        JOptionPane.showMessageDialog(null, "Gracias por utilizar el programa!");
+                        System.exit(0);
+
+                    }
+                }
+
+                a.devolver = "";
+                recognizer.removeResultListener(a);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Exception en " + e.toString());
+            e.printStackTrace();
+            System.exit(0);
+        }
+    }//GEN-LAST:event_label_logMouseClicked
+
+    private void folder_agregarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_folder_agregarMouseMoved
+        Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("open-folder-with-document.png"));
+        folder_agregar.setIcon(new ImageIcon(im));
+    }//GEN-LAST:event_folder_agregarMouseMoved
+
+    private void jd_agregarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jd_agregarMouseMoved
+        Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("open-folder.png"));
+        folder_agregar.setIcon(new ImageIcon(im));
+        Image im2 = Toolkit.getDefaultToolkit().createImage(getClass().getResource("success.png"));
+        guardar_agregar.setIcon(new ImageIcon(im2));    
+    }//GEN-LAST:event_jd_agregarMouseMoved
+
+    private void lb_sendMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_sendMouseMoved
+        Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("send_2.png"));
+        lb_send.setIcon(new ImageIcon(im));
+    }//GEN-LAST:event_lb_sendMouseMoved
+
+    private void jd_mensajeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jd_mensajeMouseMoved
+        Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("send.png"));
+        lb_send.setIcon(new ImageIcon(im));
+    }//GEN-LAST:event_jd_mensajeMouseMoved
+
+    private void folder_modificarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_folder_modificarMouseMoved
+        Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("open-folder-with-document.png"));
+        folder_modificar.setIcon(new ImageIcon(im));
+    }//GEN-LAST:event_folder_modificarMouseMoved
+
+    private void jd_modificarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jd_modificarMouseMoved
+        Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("open-folder.png"));
+        folder_modificar.setIcon(new ImageIcon(im));
+        Image im2 = Toolkit.getDefaultToolkit().createImage(getClass().getResource("success.png"));
+        guardar_modificar.setIcon(new ImageIcon(im2));
+    }//GEN-LAST:event_jd_modificarMouseMoved
+
+    private void guardar_modificarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_modificarMouseMoved
+        Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("success_2.png"));
+        guardar_modificar.setIcon(new ImageIcon(im));
+    }//GEN-LAST:event_guardar_modificarMouseMoved
+
+    private void guardar_agregarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardar_agregarMouseMoved
+        Image im = Toolkit.getDefaultToolkit().createImage(getClass().getResource("success_2.png"));
+        guardar_agregar.setIcon(new ImageIcon(im));
+    }//GEN-LAST:event_guardar_agregarMouseMoved
     void delete_contacto(String nombre) {
         try {
             Statement st = con.createStatement();
@@ -1673,34 +1777,28 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField correo_modificar;
     private javax.swing.JLabel errores;
     private javax.swing.JLabel errores2;
+    private javax.swing.JLabel folder_agregar;
+    private javax.swing.JLabel folder_modificar;
+    private javax.swing.JLabel guardar_agregar;
+    private javax.swing.JLabel guardar_modificar;
     private javax.swing.JLabel id_mensaje;
     private javax.swing.JLabel imagen_llamada;
     private javax.swing.JLabel imagen_modificar;
     private javax.swing.JLabel imagen_principal;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1718,7 +1816,13 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_modificar;
     private javax.swing.JPasswordField jt_password;
     private javax.swing.JTextField jt_username;
+    private javax.swing.JLabel label_log;
     private javax.swing.JLabel lb_foto;
+    private javax.swing.JLabel lb_send;
+    private javax.swing.JLabel mic_contacto;
+    private javax.swing.JLabel mic_llamada;
+    private javax.swing.JLabel mic_mensaje;
+    private javax.swing.JLabel mic_sim;
     private javax.swing.JLabel nombre_llamada;
     private javax.swing.JTextField nombre_modificar;
     private javax.swing.JTable tabla_bitacora;
