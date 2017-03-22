@@ -25,6 +25,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
@@ -36,6 +38,20 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+        String s = "";
+        s = "org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelCross";
+        try {
+            javax.swing.UIManager.setLookAndFeel(s);
+            SwingUtilities.updateComponentTreeUI(this);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         webcam = Webcam.getDefault();
         webcam.setViewSize(WebcamResolution.VGA.getSize());
         WebcamPanel panel = new WebcamPanel(webcam);
@@ -161,6 +177,9 @@ public class principal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tabla_mensajes = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tabla_bitacora = new javax.swing.JTable();
 
         jDialog1.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -484,6 +503,7 @@ public class principal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tabla_llamadas);
 
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/muted.png"))); // NOI18N
         jLabel9.setText("MIC");
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -501,8 +521,8 @@ public class principal extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(198, 198, 198)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -510,9 +530,9 @@ public class principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Registro de LLamadas", jPanel1);
@@ -536,6 +556,7 @@ public class principal extends javax.swing.JFrame {
         imagen_principal.setText("jLabel1");
         imagen_principal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/muted.png"))); // NOI18N
         jLabel4.setText("MIC");
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -550,26 +571,26 @@ public class principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
+                        .addGap(107, 107, 107)
                         .addComponent(imagen_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addGap(63, 63, 63)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(4, 4, 4)
                 .addComponent(imagen_principal, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Contactos", jPanel2);
@@ -584,7 +605,7 @@ public class principal extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tabla_mensajes);
 
-        jLabel10.setText("MIC");
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto_lenguajes/muted.png"))); // NOI18N
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
@@ -601,8 +622,8 @@ public class principal extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(197, 197, 197)
+                        .addComponent(jLabel10)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -610,12 +631,41 @@ public class principal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Mensajes", jPanel3);
+
+        tabla_bitacora.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "User", "Fecha", "Accion"
+            }
+        ));
+        jScrollPane5.setViewportView(tabla_bitacora);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(217, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Bitacora", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -682,6 +732,19 @@ public class principal extends javax.swing.JFrame {
                 String hora = rs.getString(4);
                 Object arr[] = {nombre, contenido, fecha, hora};
                 o.addRow(arr);
+            }
+            rs = st.executeQuery("select* from Bitacora");
+            DefaultTableModel p = (DefaultTableModel) tabla_bitacora.getModel();
+            size = p.getRowCount();
+            for (int i = 0; i < size; i++) {
+                p.removeRow(0);
+            }
+            while (rs.next()) {
+                String user = rs.getString(1);
+                String fecha = rs.getString(2);
+                String accion = rs.getString(3);
+                Object arr[] = {user,fecha, accion};
+                p.addRow(arr);
             }
         } catch (Exception ex) {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -896,7 +959,9 @@ public class principal extends javax.swing.JFrame {
                 recognizer.pause();
 
                 System.out.println("act: " + a.devolver);
-
+                Statement pt = con.createStatement();
+                pt.execute("insert Bitacora values ('Brian',getdate(),'"+a.devolver+"')");
+                refresh();
                 if (a.devolver.equals("Agregar Contacto ")) {
                     jd_agregar.setModal(true);
                     jd_agregar.pack();
@@ -1024,6 +1089,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        path = "user.png";
         try {
             if (!mic_activado) {
                 mic_activado = true;
@@ -1046,26 +1112,126 @@ public class principal extends javax.swing.JFrame {
                 recognizer.pause();
 
                 System.out.println("act: " + a.devolver);
-                if (a.devolver.contains("Agregar Contacto")) {
-                    System.out.println("Agregar contacto");
+                Statement pt = con.createStatement();
+                pt.execute("insert Bitacora values ('Brian',getdate(),'"+a.devolver+"')");
+                refresh();
+                if (a.devolver.equals("Agregar Contacto ")) {
+                    jd_agregar.setModal(true);
+                    jd_agregar.pack();
+                    jd_agregar.setLocationRelativeTo(this);
+                    jd_agregar.setVisible(true);
                 }
 
-                if (a.devolver.contains("Delete")) {
-                    System.out.println("Delete Contacto");
+                if (a.devolver.length() > 6) {
+                    if (a.devolver.substring(0, 6).equals("Delete")) {
+                        if (a.devolver.length() > 7) {
+                            delete_contacto(a.devolver.substring(7, a.devolver.length() - 1));
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Comando No Válido");
+                        }
+                    }
                 }
-                if (a.devolver.contains("Modificar")) {
-                    System.out.println("Modificar Contacto");
+                if (a.devolver.length() > 9) {
+                    if (a.devolver.substring(0, 9).equals("Modificar")) {
+                        if (a.devolver.length() > 10) {
+                            try {
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + a.devolver.substring(10, a.devolver.length() - 1) + "'");
+                                rs.next();
+                                nombre_modificar.setText(rs.getString(2));
+                                telefono_modificar.setText(rs.getString(3));
+                                correo_modificar.setText(rs.getString(4));
+                                Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(169, 145, 0);
+                                if (!rs.getString(5).equals("user.png")) {
+                                    this.imagen_modificar.setIcon(new ImageIcon(img));
+                                    path = rs.getString(5);
+                                }
+                                modificar = rs.getString(2);
+                                jd_modificar.setModal(true);
+                                jd_modificar.pack();
+                                jd_modificar.setLocationRelativeTo(this);
+                                jd_modificar.setVisible(true);
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
+                            }
+                        }
+                    }
                 }
-                if (a.devolver.contains("Salir")) {
+                if (a.devolver.length() > 7) {
+                    if (a.devolver.substring(0, 7).equals("Mensaje")) {
+                        if (a.devolver.length() > 8) {
+                            try {
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + a.devolver.substring(8, a.devolver.length() - 1) + "'");
+                                rs.next();
+
+                                contacto_mensaje.setText(rs.getString(2));
+                                telefono_mensaje.setText(rs.getString(3));
+                                id_mensaje.setText(Integer.toString(rs.getInt(1)));
+                                jd_mensaje.setModal(true);
+                                jd_mensaje.pack();
+                                jd_mensaje.setLocationRelativeTo(this);
+                                jd_mensaje.setVisible(true);
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
+                            }
+                        }
+                    }
+                }
+                if (a.devolver.length() > 4) {
+                    if (a.devolver.substring(0, 4).equals("Call")) {
+                        if (a.devolver.length() > 5) {
+                            try {
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + a.devolver.substring(5, a.devolver.length() - 1) + "'");
+                                rs.next();
+                                nombre_llamada.setText(rs.getString(2));
+                                Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(228, 188, 0);
+                                if (!rs.getString(5).equals("user.png")) {
+                                    this.imagen_llamada.setIcon(new ImageIcon(img));
+                                    path = rs.getString(5);
+                                }
+                                if (!encender) {
+                                    c.start();
+                                    encender = true;
+                                }
+                                a.devolver = "";
+                                recognizer.removeResultListener(a);
+                                c.setAvanzar(true);
+                                jd_llamada.setModal(true);
+                                jd_llamada.pack();
+                                jd_llamada.setLocationRelativeTo(this);
+                                jd_llamada.setVisible(true);
+
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
+                            }
+
+                        }
+                    }
+                }
+                if (a.devolver.length() > 6) {
+                    if (a.devolver.substring(0, 6).equals("Search")) {
+                        if (a.devolver.length() > 7) {
+                            if (a.devolver.substring(7, a.devolver.length() - 1).equals("All")) {
+                                refresh();
+                            }else{
+                                refresh(a.devolver.substring(7, a.devolver.length() - 1));
+                            }
+                            
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Comando No Válido");
+                        }
+                    }
+                }
+                if (a.devolver.equals("Salir ")) {
                     recognizer.deallocate();
                     JOptionPane.showMessageDialog(null, "Gracias por utilizar el programa!");
                     System.exit(0);
-
                 }
-
+                
                 a.devolver = "";
                 recognizer.removeResultListener(a);
-
             }
         } catch (Exception e) {
             System.out.println("Exception en " + e.toString());
@@ -1075,6 +1241,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        path = "user.png";
         try {
             if (!mic_activado) {
                 mic_activado = true;
@@ -1097,22 +1264,122 @@ public class principal extends javax.swing.JFrame {
                 recognizer.pause();
 
                 System.out.println("act: " + a.devolver);
-                if (a.devolver.contains("Agregar Contacto")) {
-                    System.out.println("Agregar contacto");
+                Statement pt = con.createStatement();
+                pt.execute("insert Bitacora values ('Brian',getdate(),'"+a.devolver+"')");
+                refresh();
+                if (a.devolver.equals("Agregar Contacto ")) {
+                    jd_agregar.setModal(true);
+                    jd_agregar.pack();
+                    jd_agregar.setLocationRelativeTo(this);
+                    jd_agregar.setVisible(true);
                 }
 
-                if (a.devolver.contains("Delete")) {
-                    System.out.println("Delete Contacto");
+                if (a.devolver.length() > 6) {
+                    if (a.devolver.substring(0, 6).equals("Delete")) {
+                        if (a.devolver.length() > 7) {
+                            delete_contacto(a.devolver.substring(7, a.devolver.length() - 1));
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Comando No Válido");
+                        }
+                    }
                 }
-                if (a.devolver.contains("Modificar")) {
-                    System.out.println("Modificar Contacto");
+                if (a.devolver.length() > 9) {
+                    if (a.devolver.substring(0, 9).equals("Modificar")) {
+                        if (a.devolver.length() > 10) {
+                            try {
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + a.devolver.substring(10, a.devolver.length() - 1) + "'");
+                                rs.next();
+                                nombre_modificar.setText(rs.getString(2));
+                                telefono_modificar.setText(rs.getString(3));
+                                correo_modificar.setText(rs.getString(4));
+                                Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(169, 145, 0);
+                                if (!rs.getString(5).equals("user.png")) {
+                                    this.imagen_modificar.setIcon(new ImageIcon(img));
+                                    path = rs.getString(5);
+                                }
+                                modificar = rs.getString(2);
+                                jd_modificar.setModal(true);
+                                jd_modificar.pack();
+                                jd_modificar.setLocationRelativeTo(this);
+                                jd_modificar.setVisible(true);
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
+                            }
+                        }
+                    }
                 }
+                if (a.devolver.length() > 7) {
+                    if (a.devolver.substring(0, 7).equals("Mensaje")) {
+                        if (a.devolver.length() > 8) {
+                            try {
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + a.devolver.substring(8, a.devolver.length() - 1) + "'");
+                                rs.next();
 
-                if (a.devolver.contains("Salir")) {
+                                contacto_mensaje.setText(rs.getString(2));
+                                telefono_mensaje.setText(rs.getString(3));
+                                id_mensaje.setText(Integer.toString(rs.getInt(1)));
+                                jd_mensaje.setModal(true);
+                                jd_mensaje.pack();
+                                jd_mensaje.setLocationRelativeTo(this);
+                                jd_mensaje.setVisible(true);
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
+                            }
+                        }
+                    }
+                }
+                if (a.devolver.length() > 4) {
+                    if (a.devolver.substring(0, 4).equals("Call")) {
+                        if (a.devolver.length() > 5) {
+                            try {
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + a.devolver.substring(5, a.devolver.length() - 1) + "'");
+                                rs.next();
+                                nombre_llamada.setText(rs.getString(2));
+                                Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(228, 188, 0);
+                                if (!rs.getString(5).equals("user.png")) {
+                                    this.imagen_llamada.setIcon(new ImageIcon(img));
+                                    path = rs.getString(5);
+                                }
+                                if (!encender) {
+                                    c.start();
+                                    encender = true;
+                                }
+                                a.devolver = "";
+                                recognizer.removeResultListener(a);
+                                c.setAvanzar(true);
+                                jd_llamada.setModal(true);
+                                jd_llamada.pack();
+                                jd_llamada.setLocationRelativeTo(this);
+                                jd_llamada.setVisible(true);
+
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
+                            }
+
+                        }
+                    }
+                }
+                if (a.devolver.length() > 6) {
+                    if (a.devolver.substring(0, 6).equals("Search")) {
+                        if (a.devolver.length() > 7) {
+                            if (a.devolver.substring(7, a.devolver.length() - 1).equals("All")) {
+                                refresh();
+                            }else{
+                                refresh(a.devolver.substring(7, a.devolver.length() - 1));
+                            }
+                            
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Comando No Válido");
+                        }
+                    }
+                }
+                if (a.devolver.equals("Salir ")) {
                     recognizer.deallocate();
                     JOptionPane.showMessageDialog(null, "Gracias por utilizar el programa!");
                     System.exit(0);
-
                 }
 
                 a.devolver = "";
@@ -1300,6 +1567,9 @@ public class principal extends javax.swing.JFrame {
                 recognizer.pause();
 
                 System.out.println("act: " + a.devolver);
+                Statement pt = con.createStatement();
+                pt.execute("insert Bitacora values ('Brian',getdate(),'"+a.devolver+"')");
+                refresh();
                 if (a.devolver.length() > 14) {
                     if (a.devolver.substring(0, 14).equals("Activar Camara")) {
                         //video_llamada();
@@ -1434,10 +1704,12 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_agregar;
@@ -1449,6 +1721,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel lb_foto;
     private javax.swing.JLabel nombre_llamada;
     private javax.swing.JTextField nombre_modificar;
+    private javax.swing.JTable tabla_bitacora;
     private javax.swing.JTable tabla_contactos;
     private javax.swing.JTable tabla_llamadas;
     private javax.swing.JTable tabla_mensajes;
