@@ -5,6 +5,9 @@
  */
 package proyecto_lenguajes;
 
+import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamPanel;
+import com.github.sarxos.webcam.WebcamResolution;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.BufferedWriter;
@@ -20,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -32,15 +36,30 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+        webcam = Webcam.getDefault();
+        webcam.setViewSize(WebcamResolution.VGA.getSize());
+        WebcamPanel panel = new WebcamPanel(webcam);
+        panel.setFPSDisplayed(true);
+        window = new JFrame("VIDEO CALL");
+        window.setTitle("Videollamada");
+        window.setSize(imagen_llamada.getSize());
+        panel.setFillArea(true);
+        window.add(panel);
+        window.pack();
+        window.setBounds(600, 150, 228, 188);
+        window.setVisible(false);
+        c = new cronometro(tiempo);
         this.jDialog1.setModal(false);
         this.jDialog1.pack();
         this.jDialog1.setLocationRelativeTo(this);
         this.jDialog1.setVisible(true);
         Image img = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(227, 173, 0);
         Image img2 = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(169, 145, 0);
+        Image img3 = Toolkit.getDefaultToolkit().createImage(getClass().getResource("user.png")).getScaledInstance(228, 188, 0);
         lb_foto.setIcon(new ImageIcon(img2));
         imagen_modificar.setIcon(new ImageIcon(img2));
         imagen_principal.setIcon(new ImageIcon(img));
+        imagen_llamada.setIcon(new ImageIcon(img3));
         try {
             recognizer = Central.createRecognizer(new EngineModeDesc(Locale.ROOT));
             recognizer.allocate();
@@ -60,6 +79,10 @@ public class principal extends javax.swing.JFrame {
         refresh();
         refrescar_gramatica();
     }
+    Webcam webcam;
+    JFrame window;
+    boolean encender = false;
+    cronometro c;
     String connection = "jdbc:sqlserver://localhost:1433;databaseName=Lenguajes;user=innova;password=12345";
     Connection con;
     Escucha a = new Escucha();
@@ -68,7 +91,7 @@ public class principal extends javax.swing.JFrame {
     boolean first = true;
     String path = "user.png";
     String modificar = "";
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,10 +111,11 @@ public class principal extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         jd_llamada = new javax.swing.JDialog();
-        jLabel5 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        imagen_llamada = new javax.swing.JLabel();
+        nombre_llamada = new javax.swing.JLabel();
+        tiempo = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         jd_agregar = new javax.swing.JDialog();
         jLabel11 = new javax.swing.JLabel();
         tf_nombre = new javax.swing.JTextField();
@@ -169,19 +193,26 @@ public class principal extends javax.swing.JFrame {
         jLabel8.setText("jLabel8");
         jDialog1.getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 350));
 
-        jLabel5.setText("jLabel5");
-        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        imagen_llamada.setText("jLabel5");
+        imagen_llamada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jButton9.setText("Colgar");
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+        nombre_llamada.setText("Nombre de Contacto");
+
+        tiempo.setText("Tiempo");
+
+        jLabel22.setText("Colgar");
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton9MouseClicked(evt);
+                jLabel22MouseClicked(evt);
             }
         });
 
-        jLabel6.setText("Nombre de Contacto");
-
-        jLabel7.setText("Tiempo");
+        jLabel24.setText("Activar voz");
+        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel24MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_llamadaLayout = new javax.swing.GroupLayout(jd_llamada.getContentPane());
         jd_llamada.getContentPane().setLayout(jd_llamadaLayout);
@@ -189,32 +220,40 @@ public class principal extends javax.swing.JFrame {
             jd_llamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_llamadaLayout.createSequentialGroup()
                 .addGroup(jd_llamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_llamadaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel24))
                     .addGroup(jd_llamadaLayout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel6))
-                    .addGroup(jd_llamadaLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jd_llamadaLayout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jd_llamadaLayout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jLabel7)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                        .addGroup(jd_llamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_llamadaLayout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(imagen_llamada, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_llamadaLayout.createSequentialGroup()
+                                .addGap(147, 147, 147)
+                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jd_llamadaLayout.createSequentialGroup()
+                                .addGap(155, 155, 155)
+                                .addComponent(tiempo))
+                            .addGroup(jd_llamadaLayout.createSequentialGroup()
+                                .addGap(133, 133, 133)
+                                .addComponent(nombre_llamada)))
+                        .addGap(0, 72, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jd_llamadaLayout.setVerticalGroup(
             jd_llamadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_llamadaLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(imagen_llamada, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jLabel6)
+                .addComponent(nombre_llamada)
                 .addGap(18, 18, 18)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addComponent(tiempo)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         jLabel11.setText("Nombre");
@@ -601,7 +640,7 @@ public class principal extends javax.swing.JFrame {
     void refresh() {
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select* from Contacto");
+            ResultSet rs = st.executeQuery("select* from Contacto ");
             DefaultTableModel m = (DefaultTableModel) tabla_contactos.getModel();
             int size = m.getRowCount();
             for (int i = 0; i < size; i++) {
@@ -615,6 +654,7 @@ public class principal extends javax.swing.JFrame {
                 Object arr[] = {nombre, telefono, correo};
                 m.addRow(arr);
             }
+
             rs = st.executeQuery("select a.Nombre,b.fecha,b.Duracion from dbo.Contacto a inner join dbo.Llamada b on a.ID_contacto=b.ID_contacto");
             DefaultTableModel n = (DefaultTableModel) tabla_llamadas.getModel();
             size = n.getRowCount();
@@ -624,7 +664,7 @@ public class principal extends javax.swing.JFrame {
             while (rs.next()) {
                 String nombre = rs.getString(1);
                 Date fecha = rs.getDate(2);
-                int duracion = rs.getInt(3);
+                String duracion = rs.getString(3);
                 Object arr[] = {nombre, fecha, duracion};
                 n.addRow(arr);
             }
@@ -647,7 +687,57 @@ public class principal extends javax.swing.JFrame {
             Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    void refresh(String name) {
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select* from Contacto where Nombre='"+name+"'");
+            DefaultTableModel m = (DefaultTableModel) tabla_contactos.getModel();
+            int size = m.getRowCount();
+            for (int i = 0; i < size; i++) {
+                m.removeRow(0);
+            }
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String nombre = rs.getString(2);
+                String telefono = rs.getString(3);
+                String correo = rs.getString(4);
+                Object arr[] = {nombre, telefono, correo};
+                m.addRow(arr);
+            }
 
+            rs = st.executeQuery("select a.Nombre,b.fecha,b.Duracion from dbo.Contacto a inner join dbo.Llamada b on a.ID_contacto=b.ID_contacto where a.Nombre = '"+name+"'");
+            DefaultTableModel n = (DefaultTableModel) tabla_llamadas.getModel();
+            size = n.getRowCount();
+            for (int i = 0; i < size; i++) {
+                n.removeRow(0);
+            }
+            while (rs.next()) {
+                String nombre = rs.getString(1);
+                Date fecha = rs.getDate(2);
+                String duracion = rs.getString(3);
+                Object arr[] = {nombre, fecha, duracion};
+                n.addRow(arr);
+            }
+            rs = st.executeQuery("select a.Nombre,b.Contenido,(cast(day(b.Fecha)as nvarchar)+'/'+cast(month(b.Fecha)as nvarchar)+'/'+cast(year(b.Fecha)as nvarchar))as fecha,cast(DATEPART([hour], b.Fecha)as nvarchar)+':'+cast(DATEPART([MINUTE], b.Fecha)as nvarchar) as Hora\n"
+                    + "from dbo.Contacto a inner join dbo.Mensaje b on a.ID_contacto=b.ID_contacto "
+                    + "where a.Nombre= '"+name+"'");
+            DefaultTableModel o = (DefaultTableModel) tabla_mensajes.getModel();
+            size = o.getRowCount();
+            for (int i = 0; i < size; i++) {
+                o.removeRow(0);
+            }
+            while (rs.next()) {
+                String nombre = rs.getString(1);
+                String contenido = rs.getString(2);
+                String fecha = rs.getString(3);
+                String hora = rs.getString(4);
+                Object arr[] = {nombre, contenido, fecha, hora};
+                o.addRow(arr);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     void refrescar_gramatica() {
         File archivo = new File("./SimpleGrammarES2.txt");
         FileWriter fw = null;
@@ -674,17 +764,18 @@ public class principal extends javax.swing.JFrame {
                     + "[<dato11>]\n"
                     + "[<dato12>]\n"
                     + "[<dato13>]\n"
-                    + "[<dato14>]";
+                    + "[<dato14>]\n"
+                    + "[<dato15>]";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select * from dbo.Contacto");
-            int length = 14;
+            int length = 15;
             while (rs.next()) {
                 length++;
                 nombres.add(rs.getString(2));
                 texto += "\n[<dato" + length + ">]";
             }
-            texto += "\n[<dato1><dato2><dato3><dato4><dato5><dato6><dato7><dato8><dato9><dato10><dato11><dato12><dato13><dato14>";
-            for (int i = 15; i <= length; i++) {
+            texto += "\n[<dato1><dato2><dato3><dato4><dato5><dato6><dato7><dato8><dato9><dato10><dato11><dato12><dato13><dato14><dato15>";
+            for (int i = 16; i <= length; i++) {
                 texto += "<dato" + i + ">";
             }
             texto += "];";
@@ -702,9 +793,10 @@ public class principal extends javax.swing.JFrame {
                     + "<dato11>=Brian;\n"
                     + "<dato12>=Disco;\n"
                     + "<dato13>=Contacto;\n"
-                    + "<dato14>=Search;";
+                    + "<dato14>=Search;\n"
+                    + "<dato15>=All;";
             for (int i = 1; i <= nombres.size(); i++) {
-                texto += "<dato" + (i + 14) + ">=" + nombres.get(i - 1) + ";";
+                texto += "<dato" + (i + 15) + ">=" + nombres.get(i - 1) + ";";
             }
             bw.write(texto);
             bw.flush();
@@ -724,11 +816,6 @@ public class principal extends javax.swing.JFrame {
         this.jDialog1.setVisible(false);
         this.setVisible(true);
     }//GEN-LAST:event_jButton6MouseClicked
-
-    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
-        this.jd_llamada.setVisible(false);
-        this.setVisible(true);
-    }//GEN-LAST:event_jButton9MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
 
@@ -873,11 +960,56 @@ public class principal extends javax.swing.JFrame {
                         }
                     }
                 }
+                if (a.devolver.length() > 4) {
+                    if (a.devolver.substring(0, 4).equals("Call")) {
+                        if (a.devolver.length() > 5) {
+                            try {
+                                Statement st = con.createStatement();
+                                ResultSet rs = st.executeQuery("select * from Contacto where Nombre = '" + a.devolver.substring(5, a.devolver.length() - 1) + "'");
+                                rs.next();
+                                nombre_llamada.setText(rs.getString(2));
+                                Image img = Toolkit.getDefaultToolkit().createImage(rs.getString(5)).getScaledInstance(228, 188, 0);
+                                if (!rs.getString(5).equals("user.png")) {
+                                    this.imagen_llamada.setIcon(new ImageIcon(img));
+                                    path = rs.getString(5);
+                                }
+                                if (!encender) {
+                                    c.start();
+                                    encender = true;
+                                }
+                                a.devolver = "";
+                                recognizer.removeResultListener(a);
+                                c.setAvanzar(true);
+                                jd_llamada.setModal(true);
+                                jd_llamada.pack();
+                                jd_llamada.setLocationRelativeTo(this);
+                                jd_llamada.setVisible(true);
+
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
+                            }
+
+                        }
+                    }
+                }
+                if (a.devolver.length() > 6) {
+                    if (a.devolver.substring(0, 6).equals("Search")) {
+                        if (a.devolver.length() > 7) {
+                            if (a.devolver.substring(7, a.devolver.length() - 1).equals("All")) {
+                                refresh();
+                            }else{
+                                refresh(a.devolver.substring(7, a.devolver.length() - 1));
+                            }
+                            
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Comando No Válido");
+                        }
+                    }
+                }
                 if (a.devolver.equals("Salir ")) {
                     recognizer.deallocate();
                     JOptionPane.showMessageDialog(null, "Gracias por utilizar el programa!");
                     System.exit(0);
-
                 }
 
                 a.devolver = "";
@@ -975,6 +1107,7 @@ public class principal extends javax.swing.JFrame {
                 if (a.devolver.contains("Modificar")) {
                     System.out.println("Modificar Contacto");
                 }
+
                 if (a.devolver.contains("Salir")) {
                     recognizer.deallocate();
                     JOptionPane.showMessageDialog(null, "Gracias por utilizar el programa!");
@@ -1120,12 +1253,85 @@ public class principal extends javax.swing.JFrame {
                 jd_agregar.setVisible(false);
                 contenido_mensaje.setText("");
             } catch (Exception e) {
-                
+
             }
         } else {
             JOptionPane.showMessageDialog(jd_mensaje, "¡El mensaje esta vacio!");
         }
     }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+        c.setAvanzar(false);
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select* from Contacto where nombre ='" + nombre_llamada.getText() + "'");
+            rs.next();
+            System.out.println(tiempo.getText());
+            st.execute("insert Llamada values (" + rs.getInt(1) + ",getdate(),'" + tiempo.getText() + "')");
+            JOptionPane.showMessageDialog(jd_llamada, "¡Llamada Finalizada!");
+            jd_llamada.setVisible(false);
+            path = "user.png";
+            refresh();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(jd_llamada, "PUPU");
+        }
+    }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+        try {
+            if (!mic_activado) {
+                mic_activado = true;
+                recognizer.resume();
+                recognizer.allocate();
+                FileReader grammar1 = new FileReader("./SimpleGrammarES2.txt");
+
+                RuleGrammar rg = recognizer.loadJSGF(grammar1);
+                rg.setEnabled(true);
+
+                recognizer.addResultListener(a);
+
+                System.out.println("Empieze Dictado");
+                recognizer.commitChanges();
+
+                recognizer.requestFocus();
+
+            } else {
+                mic_activado = false;
+                recognizer.pause();
+
+                System.out.println("act: " + a.devolver);
+                if (a.devolver.length() > 14) {
+                    if (a.devolver.substring(0, 14).equals("Activar Camara")) {
+                        //video_llamada();
+                        window.setVisible(true);
+                        window.toFront();
+                        //window.setLocationRelativeTo(jd_llamada);
+                    }
+                }
+                if (a.devolver.length() > 17) {
+                    if (a.devolver.substring(0, 17).equals("Desactivar Camara")) {
+                        //video_llamada();
+                        window.setVisible(false);
+                        //window.setLocationRelativeTo(jd_llamada);
+                    }
+                }
+                if (a.devolver.contains("Salir")) {
+                    recognizer.deallocate();
+                    JOptionPane.showMessageDialog(null, "Gracias por utilizar el programa!");
+                    System.exit(0);
+
+                }
+
+                a.devolver = "";
+                recognizer.removeResultListener(a);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Exception en " + e.toString());
+            e.printStackTrace();
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jLabel24MouseClicked
     void delete_contacto(String nombre) {
         try {
             Statement st = con.createStatement();
@@ -1137,6 +1343,22 @@ public class principal extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "¡ERROR! Comando no válido");
         }
+    }
+
+    public void video_llamada() {
+        /*Webcam webcam = Webcam.getDefault();
+        webcam.setViewSize(WebcamResolution.VGA.getSize());
+        WebcamPanel panel = new WebcamPanel(webcam);
+        panel.setFPSDisplayed(true);
+        JFrame window = new JFrame("VIDEO CALL");
+        window.setTitle("Videollamada");
+        window.setSize(imagen_llamada.getSize());
+        panel.setFillArea(true);
+        window.add(panel);
+        window.pack();
+        window.setBounds(150, 150, 228, 188);
+        window.setVisible(true);
+        */
     }
 
     /**
@@ -1182,11 +1404,11 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel errores;
     private javax.swing.JLabel errores2;
     private javax.swing.JLabel id_mensaje;
+    private javax.swing.JLabel imagen_llamada;
     private javax.swing.JLabel imagen_modificar;
     private javax.swing.JLabel imagen_principal;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton9;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1202,12 +1424,11 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -1226,6 +1447,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPasswordField jt_password;
     private javax.swing.JTextField jt_username;
     private javax.swing.JLabel lb_foto;
+    private javax.swing.JLabel nombre_llamada;
     private javax.swing.JTextField nombre_modificar;
     private javax.swing.JTable tabla_contactos;
     private javax.swing.JTable tabla_llamadas;
@@ -1235,6 +1457,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_telefono;
+    private javax.swing.JLabel tiempo;
     // End of variables declaration//GEN-END:variables
 
 }
